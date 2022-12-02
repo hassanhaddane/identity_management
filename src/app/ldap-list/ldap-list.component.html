@@ -1,0 +1,22 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource] ="dataSource">
+    <!-- Nom complet Column -->
+    <ng-container matColumnDef="nomCompet">
+      <th mat-header-cell *matHeaderCellDef> Nom complet </th>
+      <td mat-cell *matCellDe="let element">{{element.nomComplet}}</td>
+    </ng-container>
+
+    <!-- Mail Column -->
+    <ng-container matColumnDef="mail">
+      <th mat-header-cell *matHeaderCellDef> Mail </th>
+      <td mat-cell *matCellDe="let element">{{element.mail}}</td>
+    </ng-container>
+
+    <!-- employeNumero Column -->
+    <ng-container matColumnDef="employeNumero">
+      <th mat-header-cell *matHeaderCellDef> Numero </th>
+      <td mat-cell *matCellDe="let element">{{element.employeNumero}}</td>
+    </ng-container>
+
+  </table>
+</div>
