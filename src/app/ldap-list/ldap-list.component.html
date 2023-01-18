@@ -27,3 +27,18 @@
 
   </mat-paginator>
 </div>
+
+<div class="toolbar-filter">&nbsp;&nbsp;
+  <mat-form-field style="width: 40%">
+    <mat-label>Nom complet</mat-label>
+    <input matInput (keyup)="applyFilter($event)"
+           placeholder="Entrez le début d'un nom"/>
+  </mat-form-field>
+  &nbsp;&nbsp;
+  <mat-slide-toggle [checked]="unactiveSelected"
+                    (change)="unactiveChanged($event)">
+    Utilisateur désactivé uniquement
+  </mat-slide-toggle>
+</div>
+<table mat-table [dataSource]="dataSource"></table>
+
