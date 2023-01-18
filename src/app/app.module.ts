@@ -13,6 +13,9 @@ import { MatListModule } from '@angular/material/list';
 import {MatLegacyListModule} from "@angular/material/legacy-list";
 import {RouterLink} from "@angular/router";
 import { LdapListComponent } from './ldap-list/ldap-list.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { LdapListComponent } from './ldap-list/ldap-list.component';
     MatIconModule,
     MatListModule,
     MatLegacyListModule,
-    RouterLink
+    RouterLink,
+    MatFormFieldModule,
+    MatSlideToggleModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
