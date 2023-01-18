@@ -2,10 +2,11 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from "@angular/material/table";
 import {UserLdap} from "../model/user-ldap";
-import {LDAP_USERS} from "../model/ldap-mock-data";
 import {MatSlideToggleChange} from "@angular/material/slide-toggle";
-import {MatLegacyFormFieldModule} from "@angular/material/legacy-form-field";
-import {MatInputModule} from "@angular/material/input"
+import {LDAP_USERS} from "../model/ldap-mock-data";
+import {UsersService} from "../service/users.service";
+import {Router} from "@angular/router";
+
 
 
 
@@ -18,19 +19,17 @@ import {MatInputModule} from "@angular/material/input"
 })
 export class LdapListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nomComplet', 'mail', 'employeNumero'];
-  dataSource = new MatTableDataSource<UserLdap>([]);
+  dataSource = new MatTableDataSource<UserLdap>(LDAP_USERS);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor() {
+  constructor(private usersService: UsersService, private router: Router) {
   }
 
   ngOnInit(): void {
-    // console.log('Value on ngOnInit():');
     this.dataSource.paginator = this.paginator;
-    // console.log("Mat Paginator", this.paginator);
-    this.dataSource.filterPredicate = (data: UserLdap, filter: string)
-      => this.filterPredicate(data, filter);
+    // this.dataSource.filterPredicate = (data: UserLdap, filter: string)
+    //   => this.filterPredicate(data, filter);
     this.getUsers();
   }
 
@@ -44,11 +43,15 @@ export class LdapListComponent implements OnInit, AfterViewInit {
   }
 
   private getUsers(): void {
-    this.dataSource.data = LDAP_USERS;
-    if (this.unactiveSelected) {
-      this.dataSource.data = this.dataSource.data.filter(user => user.active === false
-      );
-    }
+    this.usersService.getUsers().subscribe(
+      users => {
+        if (this.unactiveSelected) {
+          this.dataSource.data = users.filter(user => user.active === false
+          );
+        } else {
+          this.dataSource.data = users
+        }
+      });
   }
   unactiveChanged($event: MatSlideToggleChange): void {
     this.unactiveSelected = $event.checked;
