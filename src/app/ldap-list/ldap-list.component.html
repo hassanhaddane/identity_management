@@ -41,4 +41,8 @@
   </mat-slide-toggle>
 </div>
 <table mat-table [dataSource]="dataSource"></table>
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"
+    (click)="edit(row.login)"
+></tr>
 
