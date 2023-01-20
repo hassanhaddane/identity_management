@@ -16,12 +16,14 @@ import { LdapListComponent } from './ldap-list/ldap-list.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatInputModule} from "@angular/material/input";
+import { LdapDetailComponent } from './ldap-detail/ldap-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LdapListComponent
+    LdapListComponent,
+    LdapDetailComponent
   ],
   imports: [
     BrowserModule,

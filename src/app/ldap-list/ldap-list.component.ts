@@ -1,16 +1,11 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from "@angular/material/table";
-import {UserLdap} from "../model/user-ldap";
+import {UserLdap} from "../models/user-ldap";
 import {MatSlideToggleChange} from "@angular/material/slide-toggle";
-import {LDAP_USERS} from "../model/ldap-mock-data";
+import {LDAP_USERS} from "../models/ldap-mock-data";
 import {UsersService} from "../service/users.service";
 import {Router} from "@angular/router";
-
-
-
-
-
 
 @Component({
   selector: 'app-ldap-list',
@@ -61,4 +56,12 @@ export class LdapListComponent implements OnInit, AfterViewInit {
     console.log('Values on ngAfterViewInit():');
     console.log("Mat Paginator:", this.paginator);
   }
+  edit(login: string) {
+    this.router.navigate(['/user', login]).then( (e) => {
+      if (! e) {
+        console.log("Navigation has failed!");
+      }
+    });
+  }
 }
+
