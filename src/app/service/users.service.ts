@@ -9,7 +9,7 @@ import {Observable, of} from "rxjs";
 export class UsersService {
   users: UserLdap[] = LDAP_USERS;
 
-  getUsers(): Observable<UserLdap> {
+  getUsers(login: any): Observable<UserLdap> {
     return of(this.users.find(user => user.login === login));
   }
 
