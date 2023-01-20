@@ -3,7 +3,6 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from "@angular/material/table";
 import {UserLdap} from "../models/user-ldap";
 import {MatSlideToggleChange} from "@angular/material/slide-toggle";
-import {LDAP_USERS} from "../models/ldap-mock-data";
 import {UsersService} from "../service/users.service";
 import {Router} from "@angular/router";
 
@@ -14,7 +13,7 @@ import {Router} from "@angular/router";
 })
 export class LdapListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nomComplet', 'mail', 'employeNumero'];
-  dataSource = new MatTableDataSource<UserLdap>(LDAP_USERS);
+  dataSource = new MatTableDataSource<UserLdap>([])
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
@@ -38,7 +37,7 @@ export class LdapListComponent implements OnInit, AfterViewInit {
   }
 
   private getUsers(): void {
-    this.usersService.getUsers().subscribe(
+    this.usersService.getUsers(login).subscribe(
       users => {
         if (this.unactiveSelected) {
           this.dataSource.data = users.filter(user => user.active === false
@@ -48,17 +47,20 @@ export class LdapListComponent implements OnInit, AfterViewInit {
         }
       });
   }
+
   unactiveChanged($event: MatSlideToggleChange): void {
     this.unactiveSelected = $event.checked;
     this.getUsers();
   }
+
   ngAfterViewInit(): void {
     console.log('Values on ngAfterViewInit():');
     console.log("Mat Paginator:", this.paginator);
   }
+
   edit(login: string) {
-    this.router.navigate(['/user', login]).then( (e) => {
-      if (! e) {
+    this.router.navigate(['/user', login]).then((e) => {
+      if (!e) {
         console.log("Navigation has failed!");
       }
     });
