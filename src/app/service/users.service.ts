@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {UserLdap} from "../models/user-ldap";
-import {LDAP_USERS} from "../models/ldap-mock-data";
+import {UserLdap} from "../model/user-ldap";
+import {LDAP_USERS} from "../model/ldap-mock-data";
 import {Observable, of} from "rxjs";
 
 @Injectable({

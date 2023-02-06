@@ -20,6 +20,8 @@ import { LdapDetailComponent } from './ldap-detail/ldap-detail.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app-routing.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LdapEditComponent } from './ldap-edit/ldap-edit.component';
+import { LdapAddComponent } from './ldap-add/ldap-add.component';
 
 // @ts-ignore
 @NgModule({
@@ -27,7 +29,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     NavbarComponent,
     LdapListComponent,
-    LdapDetailComponent
+    LdapDetailComponent,
+    LdapEditComponent,
+    LdapAddComponent
   ],
   imports: [
     BrowserModule,
