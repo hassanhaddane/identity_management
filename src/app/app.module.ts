@@ -29,7 +29,6 @@ import { LdapAddComponent } from './ldap-add/ldap-add.component';
     AppComponent,
     NavbarComponent,
     LdapListComponent,
-    LdapDetailComponent,
     LdapEditComponent,
     LdapAddComponent
   ],

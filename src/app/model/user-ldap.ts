@@ -1,9 +1,10 @@
-export interface UserLdap{
+export interface UserLdap {
+  id: number;
   login: string;
   nom: string;
   prenom: string;
   nomComplet: string;
-  motDePasse: null;
+  motDePasse: string;
   mail: string;
   role: string;
   employeNumero: number;
